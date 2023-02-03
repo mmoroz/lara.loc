@@ -13,7 +13,7 @@ services:
     container_name: project_nginx
 
   app:
-    build: 
+    build:
       context: .
       dockerfile: _docker/app/Dockerfile
     volumes:
@@ -46,6 +46,9 @@ services:
     working_dir: /var/www
     tty: true
     container_name: project_node
+    ports:
+      - "5173:5173"
+    command: "npm run dev"
 
   redis:
     image: redis:latest
@@ -53,4 +56,15 @@ services:
       - "63791:6379"
     container_name: project_redis
 
-  
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8087:8080"
+
+  mailer:
+    image: mailhog/mailhog
+    ports:
+      - "8082:8025"
+
+
