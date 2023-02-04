@@ -1,4 +1,9 @@
-<x-guest-layout>
+@extends('layouts.adv')
+
+@section('content')
+
+<div class="w-full sm:max-w-md mt-6 mb-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg mx-auto">
+
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
@@ -49,4 +54,7 @@
             </x-primary-button>
         </div>
     </form>
-</x-guest-layout>
+
+</div>
+
+@endsection
