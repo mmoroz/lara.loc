@@ -1,7 +1,12 @@
 <x-app-layout>
 
+    @section('breadcrumbs')
+        <div class="p-4 mb-2">
+            {{ Breadcrumbs::render('profile') }}
+        </div>
+    @endsection
 
-    <div class="py-12">
+    <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                 <div class="max-w-xl">
@@ -22,4 +27,5 @@
             </div>
         </div>
     </div>
+
 </x-app-layout>

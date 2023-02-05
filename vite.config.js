@@ -13,7 +13,9 @@ export default defineConfig({
         laravel({
             input: [
                 'resources/css/app.css',
+                'resources/js/jquery-3.6.3.min.js',
                 'resources/js/app.js',
+                'resources/js/main.js',
             ],
             refresh: true,
         }),

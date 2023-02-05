@@ -29,6 +29,8 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        flash('Добро пожаловать в панель администратора!')->success()->important();
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
