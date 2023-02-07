@@ -4,7 +4,7 @@ services:
   nginx:
     image: nginx:latest
     volumes:
-      - ./:/var/www
+      - ./:/var/www:cached
       - ./_docker/nginx/conf.d:/etc/nginx/conf.d
     ports:
       - "8876:80"
@@ -17,7 +17,7 @@ services:
       context: .
       dockerfile: _docker/app/Dockerfile
     volumes:
-      - ./:/var/www
+      - ./:/var/www:cached
     depends_on:
       - db
       - redis
@@ -30,7 +30,7 @@ services:
     image: mysql:latest
     restart: always
     volumes:
-      - ./tmp/db:/var/lib/mysql
+      - ./tmp/db:/var/lib/mysql:cached
     environment:
       MYSQL_DATABASE: lara
       MYSQL_ROOT_PASSWORD: secret
@@ -42,7 +42,7 @@ services:
   node:
     image: node:18-alpine
     volumes:
-      - ./:/var/www
+      - ./:/var/www:cached
     working_dir: /var/www
     tty: true
     container_name: project_node
@@ -66,5 +66,6 @@ services:
     image: mailhog/mailhog
     ports:
       - "8082:8025"
+      - "8003:1025"
 
 

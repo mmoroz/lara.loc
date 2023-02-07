@@ -24,6 +24,8 @@ class PasswordController extends Controller
             'password' => Hash::make($validated['password']),
         ]);
 
+        flash('Ваш пароль обновлен!')->success()->important();
+
         return back()->with('status', 'password-updated');
     }
 }

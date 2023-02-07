@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use function Psr\Log\alert;
 
 class ProfileController extends Controller
 {
@@ -34,6 +35,8 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
+        flash('Ваш профиль обновлен!')->success()->important();
+
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
@@ -54,6 +57,8 @@ class ProfileController extends Controller
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+
+        flash('Ваш аккаунт удален!')->success()->important();
 
         return Redirect::to('/');
     }

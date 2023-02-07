@@ -18,11 +18,11 @@ Breadcrumbs::for('register', function (BreadcrumbTrail $trail) {
 });
 
 // Dashboard
-Breadcrumbs::for('dashboard', function (BreadcrumbTrail $trail) {
-    $trail->push(__('app.Dashboard'), route('dashboard'));
+Breadcrumbs::for('admin.dashboard', function (BreadcrumbTrail $trail) {
+    $trail->push(__('app.Dashboard'), route('admin.dashboard'));
 });
 
 Breadcrumbs::for('profile', function (BreadcrumbTrail $trail) {
-    $trail->parent('dashboard');
+    $trail->parent('admin.dashboard');
     $trail->push(__('app.Profile'), route('profile.edit'));
 });
