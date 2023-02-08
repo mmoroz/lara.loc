@@ -24,7 +24,7 @@ Breadcrumbs::for('admin.dashboard', function (BreadcrumbTrail $trail) {
     $trail->push(__('app.Dashboard'), route('admin.dashboard'));
 });
 
-Breadcrumbs::for('profile', function (BreadcrumbTrail $trail) {
+Breadcrumbs::for('profile.edit', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.dashboard');
     $trail->push(__('app.Profile'), route('profile.edit'));
 });
@@ -32,13 +32,13 @@ Breadcrumbs::for('profile', function (BreadcrumbTrail $trail) {
 // Users
 
 Breadcrumbs::for('admin.users.index', function (BreadcrumbTrail $crumbs) {
-    $crumbs->parent('admin.home');
-    $crumbs->push('Users', route('admin.users.index'));
+    $crumbs->parent('admin.dashboard');
+    $crumbs->push('Пользователи', route('admin.users.index'));
 });
 
 Breadcrumbs::for('admin.users.create', function (BreadcrumbTrail $crumbs) {
     $crumbs->parent('admin.users.index');
-    $crumbs->push('Create', route('admin.users.create'));
+    $crumbs->push('Добавить пользователя', route('admin.users.create'));
 });
 
 Breadcrumbs::for('admin.users.show', function (BreadcrumbTrail $crumbs, User $user) {
@@ -48,5 +48,5 @@ Breadcrumbs::for('admin.users.show', function (BreadcrumbTrail $crumbs, User $us
 
 Breadcrumbs::for('admin.users.edit', function (BreadcrumbTrail $crumbs, User $user) {
     $crumbs->parent('admin.users.show', $user);
-    $crumbs->push('Edit', route('admin.users.edit', $user));
+    $crumbs->push('Редактировать', route('admin.users.edit', $user));
 });
