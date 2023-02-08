@@ -21,7 +21,7 @@
             <!-- Page Content -->
             <main>
                 <div class="my-5">
-                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div class="max-w-screen-2xl mx-auto sm:px-6 lg:px-8">
                         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                             @yield('breadcrumbs')
                             @include('flash::message')

@@ -29,11 +29,12 @@ Route::group(
     [
         'prefix' => 'admin',
         'as' => 'admin.',
-        'namespace' => 'Admin',
+        'namespace' => '\App\Http\Controllers\Admin',
         'middleware' => ['auth'],
     ],
     function () {
         Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class,'index'])->name('dashboard');
+        Route::resource('users', UsersController::class);
     }
 );
 
