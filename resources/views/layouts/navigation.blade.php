@@ -13,10 +13,13 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-                        {{ __('app.Dashboard') }}
+                        Панель
                     </x-nav-link>
                     <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
                         Пользователи
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.regions.index')" :active="request()->routeIs('admin.regions.index')">
+                        Регионы
                     </x-nav-link>
                 </div>
             </div>
