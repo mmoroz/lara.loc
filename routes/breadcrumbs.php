@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\Admin\Region;
+use App\Models\Adverts\Category;
+use App\Models\Adverts\Attribute;
 use App\Models\User;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
@@ -76,4 +78,46 @@ Breadcrumbs::for('admin.regions.show', function (BreadcrumbTrail $crumbs, Region
 Breadcrumbs::for('admin.regions.edit', function (BreadcrumbTrail $crumbs, Region $region) {
     $crumbs->parent('admin.regions.show', $region);
     $crumbs->push('Редактировать', route('admin.regions.edit', $region));
+});
+
+// Advert Categories
+
+Breadcrumbs::for('admin.categories.index', function (BreadcrumbTrail $crumbs) {
+    $crumbs->parent('admin.dashboard');
+    $crumbs->push('Категории', route('admin.categories.index'));
+});
+
+Breadcrumbs::for('admin.categories.create', function (BreadcrumbTrail $crumbs) {
+    $crumbs->parent('admin.categories.index');
+    $crumbs->push('Добавить', route('admin.categories.create'));
+});
+
+Breadcrumbs::for('admin.categories.show', function (BreadcrumbTrail $crumbs, Category $category) {
+    if ($parent = $category->parent) {
+        $crumbs->parent('admin.categories.show', $parent);
+    } else {
+        $crumbs->parent('admin.categories.index');
+    }
+    $crumbs->push($category->name, route('admin.categories.show', $category));
+});
+
+Breadcrumbs::for('admin.categories.edit', function (BreadcrumbTrail $crumbs, Category $category) {
+    $crumbs->parent('admin.categories.show', $category);
+    $crumbs->push('Редактировать', route('admin.categories.edit', $category));
+});
+
+
+Breadcrumbs::for('admin.categories.attributes.create', function (BreadcrumbTrail $crumbs, Category $category) {
+    $crumbs->parent('admin.categories.show', $category);
+    $crumbs->push('Добавить', route('admin.categories.attributes.create', $category));
+});
+
+Breadcrumbs::for('admin.categories.attributes.show', function (BreadcrumbTrail $crumbs, Category $category, Attribute $attribute) {
+    $crumbs->parent('admin.categories.show', $category);
+    $crumbs->push($attribute->name, route('admin.categories.attributes.show', [$category, $attribute]));
+});
+
+Breadcrumbs::for('admin.categories.attributes.edit', function (BreadcrumbTrail $crumbs, Category $category, Attribute $attribute) {
+    $crumbs->parent('admin.categories.attributes.show', $category, $attribute);
+    $crumbs->push('Редактировать', route('admin.categories.attributes.edit', [$category, $attribute]));
 });

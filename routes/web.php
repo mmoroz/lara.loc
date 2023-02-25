@@ -37,6 +37,15 @@ Route::group(
         Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class,'index'])->name('dashboard');
         Route::resource('users', UsersController::class);
         Route::resource('regions', \App\Http\Controllers\Admin\RegionController::class);
+        Route::resource('regions', \App\Http\Controllers\Admin\RegionController::class);
+        Route::resource('categories', \App\Http\Controllers\Admin\Adverts\CategoryController::class);
+        Route::group(['prefix' => 'categories/{category}', 'as' => 'categories.'], function () {
+            Route::post('/first', [\App\Http\Controllers\Admin\Adverts\CategoryController::class,'first'])->name('first');
+            Route::post('/up', [\App\Http\Controllers\Admin\Adverts\CategoryController::class,'up'])->name('up');
+            Route::post('/down', [\App\Http\Controllers\Admin\Adverts\CategoryController::class,'down'])->name('down');
+            Route::post('/last', [\App\Http\Controllers\Admin\Adverts\CategoryController::class,'last'])->name('last');
+            Route::resource('attributes', \App\Http\Controllers\Admin\Adverts\AttributeController::class)->except('index');
+        });
     }
 );
 

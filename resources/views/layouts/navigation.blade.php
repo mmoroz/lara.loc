@@ -21,6 +21,9 @@
                     <x-nav-link :href="route('admin.regions.index')" :active="request()->routeIs('admin.regions.index')">
                         Регионы
                     </x-nav-link>
+                    <x-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
+                        Категории
+                    </x-nav-link>
                 </div>
             </div>
 
